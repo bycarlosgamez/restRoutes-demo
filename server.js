@@ -5,27 +5,31 @@ const PORT = 3000;
 
 app.use(express.urlencoded({ extender: true }));
 app.use(express.json());
-app.set('views', path.join(__dirname), 'views')
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 const comments = [
     {
         username: 'Carlos',
-        commnet: 'asdfasdfasdfasdfasdf adf;kjhsbdfb'
+        comment: 'asdfasdfasdfasdfasdf adf;kjhsbdfb'
     },
     {
         username: 'Ale',
-        commnet: 'asdfasdfasdfasasdf df;kjhsbdfb'
+        comment: 'asdfasdfasdfasasdf df;kjhsbdfb'
     },
     {
         username: 'Alina',
-        commnet: 'hjtketasdfasdf adf;kjhsbdfb'
+        comment: 'hjtketasdfasdf adf;kjhsbdfb'
     },
     {
         username: 'Lia',
-        commnet: 'liuhasdfjk df;kjhsbdfb'
+        comment: 'liuhasdfjk df;kjhsbdfb'
     }
-]
+];
+
+app.get('/comments', (req,res) => {
+    res.render('comments/index', { comments });
+})
 
 app.get('/form', (req,res) => {
     res.send('GET /form response');
