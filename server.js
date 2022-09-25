@@ -36,19 +36,11 @@ app.get('/comments/new', (req,res) => {
 });
 
 app.post('/comments', (req,res) => {
-    const { username, comment } = req.body
-    comments.push({ username, comment });
-    res.render
+    const { username, comment } = req.body;
+    console.log(username, comment);
+    res.redirect('/comments');
 });
 
-// app.get('/form', (req,res) => {
-//     res.send('GET /form response');
-// });
-
-// app.post('/form', (req,res) => {
-//     const { pedal, qty } = req.body;
-//     res.send(`Here's your ${qty} ${pedal}`);
-// });
 
 app.listen(PORT, () => {
     console.log(`Listening on PORT ${PORT}`);
