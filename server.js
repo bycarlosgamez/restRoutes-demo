@@ -10,18 +10,22 @@ app.set('view engine', 'ejs');
 
 const comments = [
     {
+        id: 1,
         username: 'Carlos',
         comment: 'asdfasdfasdfasdfasdf adf;kjhsbdfb'
     },
     {
+        id: 2,
         username: 'Ale',
         comment: 'asdfasdfasdfasasdf df;kjhsbdfb'
     },
     {
+        id: 3,
         username: 'Alina',
         comment: 'hjtketasdfasdf adf;kjhsbdfb'
     },
     {
+        id: 4,
         username: 'Lia',
         comment: 'liuhasdfjk df;kjhsbdfb'
     }
@@ -41,6 +45,12 @@ app.post('/comments', (req,res) => {
     res.redirect('/comments');
 });
 
+app.get('/comments/:id', (req, res) => {
+    const { id } = req.params;
+    const comment = comments.find(c => c.id === parseInt(id));
+    console.log(comment);
+    res.render('comments/show', { comment });
+})
 
 app.listen(PORT, () => {
     console.log(`Listening on PORT ${PORT}`);
